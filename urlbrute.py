@@ -225,8 +225,8 @@ def set_arguments():
         else:
             sys.exit(parser.print_help())
 
-    if args.timeout:
-        timeout = args.timeout
+    if args.delay:
+        timeout = args.delay
 
     if args.sub_domain:
         mode = "SUB"
