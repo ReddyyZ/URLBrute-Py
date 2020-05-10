@@ -230,7 +230,7 @@ def set_arguments():
 
     if args.sub_domain:
         mode = "SUB"
-    elif args.dirs:
+    elif args.dir:
         mode = "DIR"
     elif args.robots:
         mode = "ROBOTS"
