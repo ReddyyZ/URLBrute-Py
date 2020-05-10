@@ -9,6 +9,8 @@
   <img src="https://img.shields.io/github/repo-size/ReddyyZ/URLBrute">
 </p>
 
+[![asciicast](https://asciinema.org/a/328894.svg)](https://asciinema.org/a/328894)
+
 ## What is this
 **URLBrute** is a tool to help you brute forcing website sub-domains and dirs.                                                                
 Can be used with python3 and python2.
