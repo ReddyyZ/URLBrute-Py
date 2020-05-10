@@ -26,7 +26,8 @@ sudo chmod +x install.sh
 sudo ./install.sh
 ```
 
-In windows, install [python3](https://www.python.org/downloads/release/python-373/), then run cmd as admnistrator:
+In windows, install [python 3.7](https://www.python.org/downloads/release/python-373/), then run cmd as admnistrator:
 ```bat
 install.bat
 ```
+
