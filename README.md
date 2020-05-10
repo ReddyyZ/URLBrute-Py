@@ -20,13 +20,13 @@ Can be used with python3 and python2.
   - **datetime** >= 4.3
 
 ## How to install
-In linux: 
+In Linux: 
 ```bash
 sudo chmod +x install.sh
 sudo ./install.sh
 ```
 
-In windows, install [python 3.7](https://www.python.org/downloads/release/python-373/), then run cmd as admnistrator:
+In Windows, install [python 3.7](https://www.python.org/downloads/release/python-373/), then run cmd as admnistrator:
 ```bat
 install.bat
 ```
