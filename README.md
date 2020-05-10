@@ -13,6 +13,12 @@
 **URLBrute** is a tool to help you brute forcing website sub-domains and dirs.                                                                
 Can be used with python3 and python2.
 
+## Dependencies
+- urlbrute.py
+  - **requests** >= 2.21.0
+  - **bs4** >= 0.0.1
+  - **datetime** >= 4.3
+
 ## How to install
 In linux: 
 ```bash
@@ -24,9 +30,3 @@ In windows, install [python3](https://www.python.org/downloads/release/python-37
 ```bat
 install.bat
 ```
-
-## Dependencies
-- urlbrute.py
-  - **requests** >= 2.21.0
-  - **bs4** >= 0.0.1
-  - **datetime** >= 4.3
