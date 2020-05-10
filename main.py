@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import requests,argparse,os,sys,time,datetime
 from bs4 import BeautifulSoup
 
