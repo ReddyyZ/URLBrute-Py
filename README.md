@@ -8,3 +8,25 @@
   <a href="https://discord.gg/v5d3PZ9"><img src="https://img.shields.io/discord/704882848364101763"></a>
   <img src="https://img.shields.io/github/repo-size/ReddyyZ/URLBrute">
 </p>
+
+## What is this
+**URLBrute** is a tool to help you brute forcing website sub-domains and dirs.                                                                
+Can be used with python3 and python2.
+
+## How to install
+In linux: 
+```bash
+sudo chmod +x install.sh
+sudo ./install.sh
+```
+
+In windows, install [python3](https://www.python.org/downloads/release/python-373/), then run cmd as admnistrator:
+```bat
+install.bat
+```
+
+## Dependencies
+- urlbrute.py
+  - **requests** >= 2.21.0
+  - **bs4** >= 0.0.1
+  - **datetime** >= 4.3
