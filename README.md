@@ -31,3 +31,4 @@ In windows, install [python 3.7](https://www.python.org/downloads/release/python
 install.bat
 ```
 
+> ## If you find a bug or have a good idea, create a issue.
