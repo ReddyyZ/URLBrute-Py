@@ -24,7 +24,7 @@ Can be used with python3 and python2.
 ## How to install
 In Linux: 
 ```bash
-sudo chmod +x install.sh
+chmod +x install.sh
 sudo ./install.sh
 ```
 
