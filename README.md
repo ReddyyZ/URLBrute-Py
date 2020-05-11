@@ -33,4 +33,7 @@ In Windows, install [python 3.7](https://www.python.org/downloads/release/python
 install.bat
 ```
 
+## Credits
+Credits to **[danTaler](https://github.com/danTaler/WordLists)** who created the wordlists.
+
 > ## If you find a bug or have a good idea, create a issue.
