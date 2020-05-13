@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import requests,argparse,os,sys,time,datetime
+from os.path import isfile, join
 from bs4 import BeautifulSoup
 
 header = {
@@ -12,8 +13,10 @@ mode = "NONE"
 
 if os.name == 'nt':
     clear = lambda:os.system('cls')
+    urlbrute_path = "C:\\URLBrute"
 else:
     clear = lambda:os.system('clear')
+    urlbrute_path = "/usr/share/URLBrute"
 
 def print_figlet():
     clear()
@@ -36,8 +39,43 @@ def make_request(url):
         print(e)
         return False
 
+def __list__(to_list="wordlists",path=None):
+    print_figlet()
+
+    if to_list == "wordlists":
+        wordlists_path = join(urlbrute_path,"wordlists")
+
+        if path:
+            wordlists_path = join(wordlists_path,path)
+
+        files = []
+        dirs = []
+
+        for file in os.listdir(wordlists_path):
+            if isfile(join(wordlists_path,file)):
+                files.append(file)
+            else:
+                dirs.append(file)
+
+        for _dir in dirs:
+            print("{} - DIR".format(_dir))
+        for _file in files:
+            file_size = os.stat(join(wordlists_path,_file)).st_size / (1024*1024)
+            print("{} - FILE : {} MB".format(_file,str(file_size).split('.')[0]))
+
+
 def read_wordlist(path):
     words = []
+
+    if os.path.exists(path):
+        pass
+    else:
+        if os.path.exists("C:\\URLBrute\\wordlists\\%s" % path):
+            path = "C:\\URLBrute\\wordlists\\%s" % path
+        elif os.path.exists("/usr/share/URLBrute/wordlists/%s" % path):
+            path = "/usr/share/URLBrute/wordlists/%s" % path
+        else:
+            return False
 
     with open(path,'r') as _file:
         wordlist = _file.readlines()
@@ -105,6 +143,7 @@ def subdomain_brute(url,wordlist):
         https = False
 
     _subs = wordlist
+
     _exist_subs = []
 
     print("[*]Starting SUBDOMAIN brute")
@@ -116,6 +155,9 @@ def subdomain_brute(url,wordlist):
             url_to_scan = "https://{}.{}".format(_sub,url)
         else:
             url_to_scan = "http://{}.{}".format(_sub,url)
+
+        print(url_to_scan)
+        print(_sub)
 
         response = make_request(url_to_scan)
 
@@ -213,8 +255,13 @@ def set_arguments():
     parser.add_argument('-d','--dir',action="count",default=0,help='Brute dirs')
     parser.add_argument('-r','--robots',action="count",default=0,help='Scan robots.txt')
     parser.add_argument('-w','--wordlist',type=str,help='Path to wordlist')
+    parser.add_argument('-l','--list',type=str,default=None,help='List specified thing. Ex: --list wordlists')
+    parser.add_argument('-S','--sub-dir',type=str,default=None,help='Sub Dir to be listed. Ex: --list wordlists --path test (sub-dir in wordlists)')
     parser.add_argument('-D','--delay',type=int,help='Delay between each request (In minutes, ex: 0.1)')
     args = parser.parse_args()
+
+    if args.list == "wordlists":
+        sys.exit(__list__(path=args.sub_dir,to_list="wordlists"))
 
     if not args.url:
         sys.exit(parser.print_help())
@@ -245,10 +292,15 @@ if __name__ == '__main__':
     if not args.url.startswith('http://') and not args.url.startswith('https://'):
         url = 'http://{}'.format(args.url)
 
+    if mode == "SUB" or mode == "DIR":
+        wordlist = read_wordlist(args.wordlist)
+        if not wordlist:
+            sys.exit("[-]Wordlist dont exists!")
+
     if mode == "SUB":
-        subdomain_brute(url,read_wordlist(args.wordlist))
+        subdomain_brute(url,wordlist)
     elif mode == "DIR":
-        dirs_brute(url,read_wordlist(args.wordlist))
+        dirs_brute(url,wordlist)
     elif mode == "ROBOTS":
         scan_robots(url)
     else:
